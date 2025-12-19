@@ -1,0 +1,81 @@
+:root {
+    --bg-paper: #f4e4bc;
+    --ink: #2c1a0b;
+    --gold: #d4af37;
+    --blood: #8a1c1c;
+    --wood: #3e2723;
+}
+
+/* Тема Ночь (Сварог) */
+.theme-svarog {
+    --bg-paper: #1a120b;
+    --ink: #e6dcc3;
+    --gold: #bf360c;
+    --blood: #ff4444;
+}
+
+body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Контейнер-Свиток */
+#app-root {
+    background-color: var(--bg-paper);
+    color: var(--ink);
+    width: 90%;
+    max-width: 650px;
+    padding: 50px;
+    border: 20px solid transparent;
+    border-image: url('https://img.freepik.com/free-photo/brown-wooden-textured-flooring-background_53876-101742.jpg') 30 stretch;
+    box-shadow: 0 0 50px rgba(0,0,0,0.7);
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+h1, h2 {
+    font-family: 'Ruslan Display', cursive;
+    text-align: center;
+    color: var(--blood);
+}
+
+.master-quote {
+    font-style: italic;
+    border-left: 3px solid var(--gold);
+    padding-left: 15px;
+    margin: 20px 0;
+}
+
+.medieval-btn {
+    display: block;
+    width: 100%;
+    background: var(--wood);
+    color: #fff;
+    border: 2px solid var(--gold);
+    padding: 15px;
+    margin: 10px 0;
+    font-family: 'Ruslan Display', cursive;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.medieval-btn:hover {
+    background: var(--gold);
+    color: var(--wood);
+}
+
+.medieval-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--ink);
+    font-size: 1.5rem;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 20px;
+}
