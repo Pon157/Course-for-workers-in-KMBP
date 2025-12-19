@@ -75,5 +75,31 @@ function finishTest() {
     alert(`Твой уровень: ${state.level.toUpperCase()}. Переходим в терем...`);
 }
 
+function finishTest() {
+    const results = {
+        junior: { name: "Отрок", id: "junior" },
+        middle: { name: "Бывалый", id: "middle" },
+        senior: { name: "Воевода", id: "senior" }
+    };
+
+    let final;
+    if(state.score >= 8) final = results.senior;
+    else if(state.score >= 5) final = results.middle;
+    else final = results.junior;
+
+    state.level = final.id;
+    state.levelName = final.name;
+
+    // Сохраняем "в летопись" (localStorage)
+    localStorage.setItem('academy_user', JSON.stringify(state));
+    
+    // Переход в кабинет
+    renderDashboard(state);
+}
+
+// Глобальная функция смены темы
+window.toggleTheme = () => {
+    document.body.classList.toggle('theme-svarog');
+};
 // Запуск
 showAuth();
