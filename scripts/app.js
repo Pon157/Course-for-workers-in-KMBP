@@ -101,5 +101,40 @@ function finishTest() {
 window.toggleTheme = () => {
     document.body.classList.toggle('theme-svarog');
 };
+
+function finishTest() {
+    let result = "";
+    let finalLevel = "";
+    const total = state.score;
+    const maxScore = placementQuestions.length * 3;
+
+    if (total >= maxScore * 0.8) {
+        finalLevel = 'senior';
+        result = `Поразительно! Ты набрал ${total} баллов. В тебе течет кровь истинного Воеводы. Твои знания крепки, как стены Кремля. Ступай в свои палаты!`;
+    } else if (total >= maxScore * 0.5) {
+        finalLevel = 'middle';
+        result = `Добротный результат, ${total} баллов. Ты уже не новичок, ты — Бывалый мастер. Но есть куда расти. Твой терем ждет тебя.`;
+    } else {
+        finalLevel = 'junior';
+        result = `Ты набрал ${total} баллов. Путь твой только начинается, Отрок. Не печалься, ибо каждый дуб когда-то был желудем. Ступай учить законы!`;
+    }
+
+    state.level = finalLevel;
+    
+    root.innerHTML = `
+        <div class="full-screen-center fade-in">
+            <h1>Вердикт Мудреца</h1>
+            <p class="master-quote" style="font-size: 2rem;">"${result}"</p>
+            <button class="medieval-btn" onclick="startAcademy()">Войти в Академию</button>
+        </div>
+    `;
+}
+
+window.startAcademy = () => {
+    // Сохраняем в память браузера
+    localStorage.setItem('user_rank', state.level);
+    renderDashboard(state); // Вызываем функцию из UI-контроллера
+};
+
 // Запуск
 showAuth();
