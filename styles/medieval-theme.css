@@ -4,78 +4,81 @@
     --gold: #d4af37;
     --blood: #8a1c1c;
     --wood: #3e2723;
+    --font-main: 'Cormorant Garamond', serif;
+    --font-header: 'Ruslan Display', cursive;
 }
 
-/* Тема Ночь (Сварог) */
-.theme-svarog {
-    --bg-paper: #1a120b;
-    --ink: #e6dcc3;
-    --gold: #bf360c;
-    --blood: #ff4444;
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Весь экран */
 }
 
 body {
-    background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-/* Контейнер-Свиток */
-#app-root {
-    background-color: var(--bg-paper);
+    background: var(--bg-paper);
     color: var(--ink);
-    width: 90%;
-    max-width: 650px;
-    padding: 50px;
-    border: 20px solid transparent;
-    border-image: url('https://img.freepik.com/free-photo/brown-wooden-textured-flooring-background_53876-101742.jpg') 30 stretch;
-    box-shadow: 0 0 50px rgba(0,0,0,0.7);
-    position: relative;
-    transition: all 0.5s ease;
+    font-family: var(--font-main);
+    font-size: 1.5rem; /* Увеличенный шрифт */
 }
 
-h1, h2 {
-    font-family: 'Ruslan Display', cursive;
-    text-align: center;
+/* Фон на весь экран с текстурой */
+#app-root {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 5% 10%;
+    background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+h1 { font-size: 4rem; margin-bottom: 30px; }
+h2 { font-size: 3rem; }
+
+/* Стилизация кабинета */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.scroll-panel {
+    background: rgba(0,0,0,0.03);
+    border: 3px solid var(--wood);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.law-card {
+    border-bottom: 2px solid var(--wood);
+    padding: 20px 0;
+}
+
+.status-badge {
+    font-family: var(--font-header);
     color: var(--blood);
+    border: 1px solid var(--blood);
+    padding: 5px 15px;
+    font-size: 1.2rem;
 }
 
-.master-quote {
-    font-style: italic;
-    border-left: 3px solid var(--gold);
-    padding-left: 15px;
-    margin: 20px 0;
-}
-
+/* Крупные кнопки */
 .medieval-btn {
-    display: block;
-    width: 100%;
-    background: var(--wood);
-    color: #fff;
-    border: 2px solid var(--gold);
-    padding: 15px;
-    margin: 10px 0;
-    font-family: 'Ruslan Display', cursive;
+    padding: 20px 40px;
+    font-size: 1.8rem;
     cursor: pointer;
+    background: var(--wood);
+    color: var(--gold);
+    border: 3px solid var(--gold);
+    font-family: var(--font-header);
     transition: 0.3s;
 }
 
 .medieval-btn:hover {
-    background: var(--gold);
-    color: var(--wood);
-}
-
-.medieval-input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid var(--ink);
-    font-size: 1.5rem;
-    color: var(--ink);
-    text-align: center;
-    margin-bottom: 20px;
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
