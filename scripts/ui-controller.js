@@ -42,3 +42,35 @@ export function renderDashboard(user) {
         </div>
     `;
 }
+// Внутри функции renderDashboard
+function createLawCards(level) {
+    const data = levelsData[level];
+    return data.laws.map(law => `
+        <div class="law-card-detailed">
+            <div class="law-image" style="background-image: url('${law.image}')"></div>
+            <div class="law-content">
+                <h3>${law.title}</h3>
+                <p>${law.description}</p>
+                <div class="steps-progress">
+                    ${law.steps.map(step => `
+                        <div class="step-icon" title="${step.label}">
+                            ${getStepIcon(step.type)}
+                        </div>
+                    `).join('')}
+                </div>
+                <button class="medieval-btn small" onclick="openLaw('${law.id}')">Приступить к изучению</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function getStepIcon(type) {
+    const icons = {
+        view: "📖",
+        practice: "⚔️",
+        repeat: "🧠",
+        chat: "👥",
+        review: "⚖️"
+    };
+    return icons[type] || "📜";
+}
