@@ -70,3 +70,34 @@ export default function Module() {
     </div>
   );
 }
+
+const handleSubmit = async () => {
+  setSaving(true);
+  
+  // 1. Получаем ключевые слова для этого задания из БД
+  const { data: assignment } = await supabase
+    .from('assignments')
+    .select('keywords')
+    .eq('id', id)
+    .single();
+
+  const userText = answer.toLowerCase();
+  const foundKeywords = assignment.keywords.filter(word => 
+    userText.includes(word.toLowerCase())
+  );
+
+  // 2. Проверяем, все ли ключевые слова на месте (например, минимум 70%)
+  const isPassedScript = foundKeywords.length >= assignment.keywords.length * 0.7;
+
+  if (isPassedScript) {
+    await supabase.from('user_answers').update({
+      status: 'waiting_actor', // Теперь этот статус увидит актер в боте
+      is_draft: false
+    }).eq('module_id', id);
+    
+    alert('Скрипт одобрил ответ! Теперь перейди в Telegram-бот для разговора с актером.');
+  } else {
+    alert('В ответе не хватает важных терминов. Попробуй дополнить теорией.');
+  }
+  setSaving(false);
+};
