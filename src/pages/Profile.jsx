@@ -33,3 +33,16 @@ export default function Profile() {
     </div>
   );
 }
+
+const CuratorBlock = ({ curator }) => (
+  <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 rounded-2xl">
+    <h4 className="font-bold text-blue-800 dark:text-blue-300 mb-2">Ваш персональный куратор</h4>
+    <div className="flex items-center gap-3">
+      <div className="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center">🎓</div>
+      <div>
+        <div className="font-medium dark:text-white">{curator?.name || 'Александр'}</div>
+        <div className="text-xs text-blue-600 dark:text-blue-400">На связи в Telegram через бота</div>
+      </div>
+    </div>
+  </div>
+);
