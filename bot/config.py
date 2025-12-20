@@ -1,0 +1,8 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BOT_TOKEN = "8349134247:AAGlPUb6tP1WLAE2udSKj5P_TPY9zRny9Os"
+SUPABASE_URL = "https://homxdvtanuqxmdayvmib.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvbXhkdnRhbnVxeG1kYXl2bWliIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NTg4OTU5NywiZXhwIjoyMDgxNDY1NTk3fQ.JEJi7E9GVdwimlHALDHBCX_50J8GpgSxzSCJBcMHspU" 
