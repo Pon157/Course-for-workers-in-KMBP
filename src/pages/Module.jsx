@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'; // для таблиц
 
 export default function Module() {
   const { id } = useParams();
@@ -95,9 +97,10 @@ const handleSubmit = async () => {
       is_draft: false
     }).eq('module_id', id);
     
-    alert('Скрипт одобрил ответ! Теперь перейди в Telegram-бот для разговора с актером.');
+    alert('Ответ одобрен! Теперь перейдите в Telegram-бот для разговора с актером.');
   } else {
     alert('В ответе не хватает важных терминов. Попробуй дополнить теорией.');
   }
   setSaving(false);
 };
+
